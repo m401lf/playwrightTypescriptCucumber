@@ -1,0 +1,40 @@
+{
+  "name": "playwright-typescript-cucumber-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean:reports": "rimraf test-result && mkdirp test-result",
+    "generate:report": "npx ts-node ./src/helper/reportGenerate.ts",
+    "pretest": "npm run clean:reports",
+    "posttest": "npm run generate:report",
+    "execute:script": "cucumber-js test",
+    "test": "npm run execute:script || npm run posttest",
+    "execute:script:failed": "cucumber-js -p rerun @rerun.txt",
+    "test:failed": "npm run execute:script:failed || npm run generate:report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.5.1",
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.6.3",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^0.21.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "fs-extra": "^11.1.1",
+    "mkdirp": "^3.0.1",
+    "multiple-cucumber-html-reporter": "^3.5.0",
+    "prettier": "3.1.1",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "winston": "^3.8.2"
+  }
+}
